@@ -99,8 +99,6 @@ define("ember/resolver",
       this._deprecatedPodModulePrefix = true;
     }
     */
-    Ember.assert('`modulePrefix` must be defined', this.namespace.modulePrefix);
-
     var normalizedModuleName = this.findModuleName(parsedName);
 
     if (normalizedModuleName) {
@@ -206,6 +204,10 @@ define("ember/resolver",
       return parsedName.prefix + '/' +  this.pluralize(parsedName.type) + '/' + parsedName.fullNameWithoutType;
     },
 
+    moduleNameWithoutPrefix: function(parsedName) {
+      return this.pluralize(parsedName.type)  + '/' + parsedName.fullNameWithoutType;
+    },
+
     prefix: function(parsedName) {
       var tmpPrefix = this.namespace.modulePrefix;
 
@@ -230,7 +232,8 @@ define("ember/resolver",
         this.podBasedModuleName,
         this.podBasedComponentsInSubdir,
         this.mainModuleName,
-        this.defaultModuleName
+        this.defaultModuleName,
+        this.moduleNameWithoutPrefix
       ]);
     }),
 
