@@ -7,7 +7,7 @@ define("ember/resolver",
     "use strict";
 
     if (typeof requirejs.entries === 'undefined') {
-      requirejs.entries = requirejs._eak_seen;
+      requirejs.entries = require.s.contexts._.defined;
     }
 
   /*
