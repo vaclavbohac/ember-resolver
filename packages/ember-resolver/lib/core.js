@@ -1,7 +1,7 @@
 /*globals define registry requirejs */
 
 define("ember/resolver",
-  [],
+  ['ember'],
   function() {
     "use strict";
 
@@ -68,8 +68,7 @@ define("ember/resolver",
     var nameParts = prefixParts[prefixParts.length - 1].split(":");
     var type = nameParts[0], fullNameWithoutType = nameParts[1];
     var name = fullNameWithoutType;
-    var namespace = get(this, 'namespace');
-    var root = namespace;
+    var root = get(this, 'namespace');
 
     return {
       parsedName: true,
