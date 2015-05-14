@@ -210,6 +210,12 @@ define("ember/resolver",
       }
     },
 
+    mainModuleNameWithoutPrefix: function(parsedName) {
+      if (parsedName.fullNameWithoutType === 'main') {
+        return parsedName.type;
+      }
+    },
+
     defaultModuleName: function(parsedName) {
       return parsedName.prefix + '/' +  this.pluralize(parsedName.type) + '/' + parsedName.fullNameWithoutType;
     },
@@ -243,7 +249,8 @@ define("ember/resolver",
         this.podBasedComponentsInSubdir,
         this.mainModuleName,
         this.defaultModuleName,
-        this.moduleNameWithoutPrefix
+        this.moduleNameWithoutPrefix,
+        this.mainModuleNameWithoutPrefix
       ]);
     }),
 
